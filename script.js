@@ -44,6 +44,6 @@ nextBtnThird.addEventListener("click", function(event){
      event.preventDefault();
          slidePage.style.marginLeft = "-25%";
           
-         //alert("Your Form Successfully Signed up");
+         alert("Successfully Rated ");
         });
         
