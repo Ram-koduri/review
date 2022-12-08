@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <title>Multi Step Form | CodingNepal</title>
     <link rel="stylesheet" href="style.css">
@@ -9,107 +12,77 @@
   <body>
     <div class="container">
       <header>Signup Form</header>
-      <div class="progress-bar">
-        <div class="step">
-          <p>Name</p>
-          <div class="bullet">
-            <span>1</span>
-          </div>
-          <div class="check fas fa-check"></div>
-        </div>
-        <div class="step">
-          <p>Contact</p>
-          <div class="bullet">
-            <span>2</span>
-          </div>
-          <div class="check fas fa-check"></div>
-        </div>
-        <div class="step">
-          <p>Birth</p>
-          <div class="bullet">
-            <span>3</span>
-          </div>
-          <div class="check fas fa-check"></div>
-        </div>
-        <div class="step">
-          <p>Submit</p>
-          <div class="bullet">
-            <span>4</span>
-          </div>
-          <div class="check fas fa-check"></div>
-        </div>
-      </div>
+      
       <div class="form-outer">
-        <form action="#">
+        <form action="https://sheetdb.io/api/v1/l7vi76fxt91fx" method="post" id="sheetdb-form" >
           <div class="page slide-page">
             <div class="title">Basic Info:</div>
             <div class="field">
-              <div class="label">First Name</div>
-              <input type="text">
+              <div class="label">Enter Name</div>
+              <input type="text"  name="data[Name]" required>
             </div>
-            <div class="field">
-              <div class="label">Last Name</div>
-              <input type="text">
-            </div>
+            
             <div class="field">
               <button class="firstNext next">Next</button>
             </div>
           </div>
 
           <div class="page">
-            <div class="title">Contact Info:</div>
+            <div class="title">Select Team:</div>
+            
             <div class="field">
-              <div class="label">Email Address</div>
-              <input type="text">
-            </div>
-            <div class="field">
-              <div class="label">Phone Number</div>
-              <input type="Number">
+              <div class="label">Team</div>
+              <select name="data[Team]" required>
+                <option>team a</option>
+                <option>team b</option>
+                <option>team c</option>
+                <option>team d</option>
+                <option>team e</option>
+                
+              </select>
             </div>
             <div class="field btns">
-              <button class="prev-1 prev">Previous</button>
+              
               <button class="next-1 next">Next</button>
             </div>
           </div>
 
           <div class="page">
-            <div class="title">Date of Birth:</div>
+            
             <div class="field">
-              <div class="label">Date</div>
-              <input type="text">
-            </div>
-            <div class="field">
-              <div class="label">Gender</div>
-              <select>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
+              <div class="label" >Gender</div>
+              <select name="data[Rating]" required>
+                <option>1 star</option>
+                <option>2 star</option>
+                <option>3 star</option>
+                <option>4 star</option>
+                <option>5 star</option>
+                
               </select>
             </div>
             <div class="field btns">
               <button class="prev-2 prev">Previous</button>
-              <button class="next-2 next">Next</button>
+              <button class="submit" type="submit">submit</button>
             </div>
           </div>
 
-          <div class="page">
-            <div class="title">Login Details:</div>
-            <div class="field">
-              <div class="label">Username</div>
-              <input type="text">
-            </div>
-            <div class="field">
-              <div class="label">Password</div>
-              <input type="password">
-            </div>
-            <div class="field btns">
-              <button class="prev-3 prev">Previous</button>
-              <button class="submit">Submit</button>
-            </div>
-          </div>
+          
         </form>
       </div>
     </div>
+    
+    <script>
+      var form = document.getElementById('sheetdb-form');
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    fetch(form.action, {
+        method : "POST",
+        body: new FormData(document.getElementById("sheetdb-form")),
+    }).then(
+        response => response.json()
+    )
+  });
+  </script>
     <script src="script.js"></script>
 
   </body>
